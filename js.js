@@ -13,7 +13,8 @@ var DifficultyHPPercent = [
 var ZombieStats = [
   {
     "Normal Zombie": {
-        "ExpGrow": 11,
+        "ExpGrow": 1.1,
+        "ExpThr":11
     },
     "Boomer": {
         "HealthScale":1.25,
@@ -53,7 +54,7 @@ var ZombieStats = [
         "IMPUniqueScale":1.5,
     },
     "Long Arm": {
-        "HealthScale":1.1,
+        "HealthScale":1.2,
         "NMRarityScale":1.25,
         "IMPRarityScale":1.5,
         "NMUniqueScale":1.1,
@@ -73,7 +74,7 @@ var ZombieStats = [
     },
     "Hunter": {
       "HealthScale": 3.375,
-      "PerScale": 0.8,
+      "PerScale": 0.8/2.25,
       "ExpGrow": 1.15,
       "ExpThr": 8,
       "NMRarityScale":1.5,
@@ -95,7 +96,7 @@ var ZombieStats = [
         "IMPRarityScale":2,
       },
       "Miner": {
-        "HealthScale": 1.5,
+        "HealthScale": 2,
         "NMRarityScale":1.5,
         "IMPRarityScale":2,
       },
@@ -175,7 +176,7 @@ var df = "";
 var PlayerCount = 1;
 var Wave = 1;
 var CurrentZombie = "";
-var perscale = 0.06;
+var perscale = 0.12;
 
 function CreateDiv(Name, Value) {
   let div = document.createElement("div");
@@ -230,76 +231,6 @@ function CustomFormula(ColorMulti) {
 
 
 
-var Formulas = [
-  {
-    "Normal Zombie": function () {
-      CreateDiv("Pale Zombie:", CustomFormula(1));
-      CreateDiv("Blue Zombie:", CustomFormula(0.8));
-      CreateDiv("Green Zombie:", CustomFormula(1.2));
-      CreateDiv("Red Zombie:", CustomFormula(1.2));
-    },
-    Boomer: function () {
-      CreateDiv("Pale Boomer Zombie:", CustomFormula(1));
-      CreateDiv("Blue Boomer Zombie:", CustomFormula(0.8));
-      CreateDiv("Green Boomer Zombie:", CustomFormula(1.2));
-      CreateDiv("Red Boomer Zombie:", CustomFormula(1.2));
-    },
-    Crawler: function () {
-      CreateDiv("Pale Crawler Zombie:", CustomFormula(1, 0.8));
-      CreateDiv("Blue Crawler Zombie:", CustomFormula(0.8, 0.8));
-      CreateDiv("Green Crawler Zombie:", CustomFormula(1.2, 0.8));
-      CreateDiv("Red Crawler Zombie:", CustomFormula(1.2, 0.8));
-    },
-    Electric: function () {
-      CreateDiv("Pale Electric Zombie:", CustomFormula(1, 1.1));
-      CreateDiv("Blue Electric Zombie:", CustomFormula(0.8, 1.1));
-      CreateDiv("Green Electric Zombie:", CustomFormula(1.2, 1.1));
-      CreateDiv("Red Electric Zombie:", CustomFormula(1.2, 1.1));
-    },
-    Flamer: function () {
-      CreateDiv("Pale Flamer Zombie:", CustomFormula(1, 1.2));
-      CreateDiv("Blue Flamer Zombie:", CustomFormula(0.8, 1.2));
-      CreateDiv("Green Flamer Zombie:", CustomFormula(1.2, 1.2));
-      CreateDiv("Red Flamer Zombie:", CustomFormula(1.2, 1.2));
-    },
-    Headless: function () {
-      CreateDiv("Pale Headless Zombie:", CustomFormula(1, 0.9));
-      CreateDiv("Blue Headless Zombie:", CustomFormula(0.8, 0.9));
-      CreateDiv("Green Headless Zombie:", CustomFormula(1.2, 0.9));
-      CreateDiv("Red Headless Zombie:", CustomFormula(1.2, 0.9));
-    },
-    "Long Arm": function () {
-      CreateDiv("Pale Long Arm Zombie:", CustomFormula(1, 1.2));
-      CreateDiv("Blue Long Arm Zombie:", CustomFormula(0.8, 1.2));
-      CreateDiv("Green Long Arm Zombie:", CustomFormula(1.2, 1.2));
-      CreateDiv("Red Long Arm Zombie:", CustomFormula(1.2, 1.2));
-    },
-    Toxic: function () {
-      CreateDiv("Pale Toxic Zombie:", CustomFormula(1, 1.2));
-      CreateDiv("Blue Toxic Zombie:", CustomFormula(0.8, 1.2));
-      CreateDiv("Green Toxic Zombie:", CustomFormula(1.2, 1.2));
-      CreateDiv("Red Toxic Zombie:", CustomFormula(1.2, 1.2));
-    },
-    Slasher: function () {
-      CreateDiv("Pale Slasher Zombie:", CustomFormula(1, 1.2));
-      CreateDiv("Blue Slasher Zombie:", CustomFormula(0.8, 1.2));
-      CreateDiv("Green Slasher Zombie:", CustomFormula(1.2, 1.2));
-      CreateDiv("Red Slasher Zombie:", CustomFormula(1.2, 1.2));
-    },
-    Riot: function () {
-      CreateDiv("Pale Riot Zombie:", CustomFormula(1, 1.2));
-      CreateDiv("Blue Riot Zombie:", CustomFormula(0.8, 1.2));
-      CreateDiv("Green Riot Zombie:", CustomFormula(1.2, 1.2));
-      CreateDiv("Red Riot Zombie:", CustomFormula(1.2, 1.2));
-    },
-    Wraith: function () {
-      CreateDiv("Pale Riot Zombie:", CustomFormula(1));
-    },
-    Hunter: function () {
-      CreateDiv("Hunter:", CustomFormula(1));
-    },
-  },
-];
 
 const DifficultyButtons = document.querySelectorAll(".difficulty");
 const ZombieButtons = document.querySelectorAll(".zombie");
